@@ -97,7 +97,7 @@ function procesarDatos(data) {
 }
 //FUNCION DEL GRAFICO
 function procesarGrafico(data) {
-  // Ejemplo de datos para el gráfico de pastel (puedes adaptar según los datos de tu API)
+  // captura de datos para incorporar al grafico pastel
   var datosGrafico = [
     { label: 'Fuerza', y: parseInt(data.powerstats.strength) || 0 },
     { label: 'Agilidad', y: parseInt(data.powerstats.speed) || 0 },
@@ -114,6 +114,8 @@ function procesarGrafico(data) {
     data: [{
       type: "pie",
       startAngle: 240,
+      showInLegend: "true",
+      legendText: "{label}",
       yValueFormatString: "##0.00'%'",
       indexLabel: "{label} {y}",
       dataPoints: datosGrafico

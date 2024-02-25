@@ -2,3 +2,8 @@
     height: 30px; 
     margin-right: 10px; 
 }
+#grafico {
+    display: flex;
+    justify-content: space-between; 
+    align-items: end; /
+  }
