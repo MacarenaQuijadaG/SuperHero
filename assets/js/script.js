@@ -44,7 +44,8 @@ function renderizarInformacion(heroes) {
                     <ul>
                       <li>Durabilidad:${heroe.durabilidad}</li>
                       <li>Rapidez:${heroe.rapidez}</li>
-                      <li>${heroe.speed}</li>
+                      <li>Poder:${heroe.poder}</li>
+                      <li>Combate:${heroe.combate}</li>
                     </ul> 
                    </p>
                   <p class="card-text"> Primera Aparicion: ${heroe.primeraAparicion}</p>
@@ -86,8 +87,12 @@ function procesarDatos(data) {
     durabilidad:data.powerstats.durability,
     rapidez: data.powerstats.speed,
     aliansa:data.biography.aliases,
+    poder: data.powerstats.power,
+    combate: data.powerstats.combat,
+    primeraAparicion: data.biography.firstappearance,
+    altura: data.appearance.height,
+    peso: data.appearance.weight,
     
-
   }];
 }
 //FUNCION DEL GRAFICO
