@@ -66,11 +66,11 @@ function consultarAPI(numeroHeroe) {
   $.ajax({
     url: `https://superheroapi.com/api.php/894449015759708/${numeroHeroe}`,
     method: 'GET',
-    success: function (data) {
+    success: function (data) { //RESPONSIVE ES REMPLAZADO POR DATA
       var heroes = procesarDatos(data);
-      mostrarGrafico(heroes);
+      procesarGrafico(data)
       renderizarInformacion(heroes);
-    }, //ERROR EN CASO DE QUE NO SE PUEDA CONECTAR CON LA API
+    }, //ERROR EN CASO DE QUE NO SE PUEDA CONECTAR CON LA API O QUE NO SE PUEDA PROCESARDATOS, MOSTRARGRAFICO, RENDERISAR INFORMACION
     error: function () {
       mostrarError('No se pudo obtener la información del héroe.');
     }
@@ -96,6 +96,29 @@ function procesarDatos(data) {
   }];
 }
 //FUNCION DEL GRAFICO
-function mostrarGrafico(heroes) {
-  
+function procesarGrafico(data) {
+  // Ejemplo de datos para el gráfico de pastel (puedes adaptar según los datos de tu API)
+  var datosGrafico = [
+    { label: 'Fuerza', y: parseInt(data.powerstats.strength) || 0 },
+    { label: 'Agilidad', y: parseInt(data.powerstats.speed) || 0 },
+    { label: 'Inteligencia', y: parseInt(data.powerstats.intelligence) || 0 },
+    { label: 'Rapidez', y: parseInt(data.powerstats.speed) || 0 }
+  ];
+
+  // Configura y muestra el gráfico de pastel
+  var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+      text: "Distribución de habilidades del héroe"
+    },
+    data: [{
+      type: "pie",
+      startAngle: 240,
+      yValueFormatString: "##0.00'%'",
+      indexLabel: "{label} {y}",
+      dataPoints: datosGrafico
+    }]
+  });
+
+  chart.render();
 }
