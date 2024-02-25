@@ -106,7 +106,7 @@ function procesarGrafico(data) {
   ];
 
   // Configura y muestra el gráfico de pastel
-  var chart = new CanvasJS.Chart("chartContainer", {
+  var chart = new CanvasJS.Chart("chartContainer", {   
     animationEnabled: true,
     title: {
       text: "Distribución de habilidades del héroe"
